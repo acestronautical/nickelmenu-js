@@ -41,7 +41,7 @@ select, input[type="text"], input[type="file"] {
 button {
     display: block;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #4888cd;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -52,7 +52,7 @@ button:hover {
     background-color: #0056b3;
 }
 
-.add-btn, .remove-row {
+.remove-row {
     width: 24px;
     height: 24px;
     border-radius: 50%;
@@ -64,32 +64,12 @@ button:hover {
     cursor: pointer;
 }
 
-.add-btn {
-    background-color: #28a745;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-}
-
-.add-btn:hover {
-    background-color: #218838;
-}
-
 .remove-row {
-    background-color: #dc3545;
+    background-color: #a65f66;
     margin-left: 10px;
     margin-bottom: 55px;
 }
 
 .remove-row:hover {
     background-color: #c82333;
-}
-
-.download-btn {
-    margin-top: 20px;
-    background-color: #007bff;
-}
-
-.download-btn:hover {
-    background-color: #0056b3;
 }

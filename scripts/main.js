@@ -54,6 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function createRow(config, parentElement) {
         const row = document.createElement('div');
         row.classList.add('row');
+
+        const removeButton = document.createElement('button');
+        removeButton.textContent = '-';
+        removeButton.classList.add('remove-row');
+        removeButton.addEventListener('click', () => row.remove());
+
+        row.appendChild(removeButton);
+
         createInput(config, row, ["root"]);
         parentElement.appendChild(row);
     }
@@ -61,22 +69,33 @@ document.addEventListener('DOMContentLoaded', () => {
     function gatherConfig() {
         const config = [];
         const rows = formContainer.querySelectorAll('.row');
+        let valid = true;
         rows.forEach(row => {
-            const select = row.querySelector('select');
+            const inputs = row.querySelectorAll('input, select');
+            const select = inputs[0];
             const selectedOption = select.value;
             if (selectedOption) {
-                const inputValues = Array.from(row.querySelectorAll('input, select'))
+                const inputValues = Array.from(inputs)
                     .slice(1)
                     .map(input => input.value)
                     .filter(value => value);
+                if (inputValues.length < (inputs.length - 1)) {
+                    valid = false;
+                }
                 config.push([selectedOption, ...inputValues].join(':'));
+            } else {
+                valid = false;
             }
         });
-        return config.join('\n');
+        return { configText: config.join('\n'), valid };
     }
 
     async function downloadConfig() {
-        const configText = gatherConfig();
+        const { configText, valid } = gatherConfig();
+        if (!valid) {
+            alert('Please fill in all fields before downloading the configuration.');
+            return;
+        }
         const zip = new JSZip();
         const response = await fetch('assets/KoboRoot.tgz');
         if (!response.ok) {

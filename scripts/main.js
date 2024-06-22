@@ -18,10 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (config.options) {
             input = document.createElement('select');
             input.innerHTML = '<option value="">Select an option</option>';
-            for (const [optionKey] of Object.entries(config.options)) {
+            for (const [optionKey, optionValue] of Object.entries(config.options)) {
                 const option = document.createElement('option');
                 option.value = optionKey;
                 option.textContent = optionKey;
+                option.title = optionValue[0].title || optionValue;
                 input.appendChild(option);
             }
             input.addEventListener('change', (event) => {

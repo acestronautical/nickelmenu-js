@@ -37,7 +37,7 @@ const NickelConfigOptions = {
                     nickel_setting: [
                         {
                             label: "action",
-                            title: "changes a setting",
+                            title: "how to change the setting",
                             options: {
                                 toggle: "toggles between true/false",
                                 enable: "sets to true",
@@ -46,6 +46,7 @@ const NickelConfigOptions = {
                         },
                         {
                             label: "setting",
+                            title: "the setting to change",
                             options: {
                                 invert: "FeatureSettings.InvertScreen (this requires a reboot to apply on 4.28.18220+, and may not work on newer devices)",
                                 dark_mode: "ReadingSettings.DarkMode",
@@ -58,7 +59,8 @@ const NickelConfigOptions = {
                     ],
                     nickel_extras: [
                         {
-                            label: "plugin",
+                            label: "app",
+                            title: "open a nickel application",
                             options: {
                                 unblock_it: "unblock_it",
                                 sketch_pad: "sketch_pad",
@@ -71,7 +73,8 @@ const NickelConfigOptions = {
                     nickel_browser: [{ label: "url", title: "Open the web browser", placeholder: "url to open as homepage" }],
                     "nickel_browser:modal": [{ label: "url", title: "Open the web browser as a pop-up", placeholder: "url to open as homepage" }],
                     nickel_misc: [{
-                        label: "open",
+                        label: "misc",
+                        title: " various useful actions",
                         options: {
                             home: "goes to the home screen",
                             force_usb_connection: "forces a usb connection dialog to be shown",
@@ -81,6 +84,7 @@ const NickelConfigOptions = {
                     }],
                     nickel_open: [{
                         label: "open",
+                        title: "open a kobo menu",
                         options: {
                             "discover:storefront": "Kobo Store",
                             "discover:wishlist": "Wishlist",
@@ -101,6 +105,7 @@ const NickelConfigOptions = {
                     }],
                     nickel_wifi: [{
                         label: "wifi setting",
+                        title: "modify wifi behavior",
                         options: {
                             autoconnect: "attempts to enable and connect to wifi (similar to what happens when you open a link)",
                             autoconnect_silent: "attempts to connect to wifi in the background (does nothing if wifi is disabled, the battery is low, is already connected, or there aren't any known networks in range) (no errors are shown) (similar to what happens when you turn on the Kobo)",
@@ -111,6 +116,7 @@ const NickelConfigOptions = {
                     }],
                     nickel_orientation: [{
                         label: "orientation",
+                        title: "change screen orientation",
                         options: {
                             portrait: "portrait mode",
                             landscape: "landscape mode",
@@ -122,6 +128,7 @@ const NickelConfigOptions = {
                     }],
                     power: [{
                         label: "power action",
+                        title: "perform a power action",
                         options: {
                             shutdown: "shutdown",
                             reboot: "reboot",

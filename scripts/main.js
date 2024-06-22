@@ -38,6 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (input) {
+            let label = document.createElement('label');
+            const inputId = `input-${Math.random().toString(36).substr(2, 9)}`;
+            input.id = inputId;
+            input.title = config.title;
+            label.htmlFor = inputId;
+            label.textContent = config.label;
+            column.appendChild(label);
             column.appendChild(input);
             parentElement.appendChild(column);
         }

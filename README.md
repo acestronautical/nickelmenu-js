@@ -1,10 +1,10 @@
-# Nickel Menu Configuration Generator
+# NickelMenu Configuration Generator
 
-This project is a web-based configuration generator for customizing the Nickel menu on Kobo e-readers. It allows users to dynamically create configuration files tailored to their preferences.
+This project is a web-based configuration generator for customizing NickelMenu on Kobo e-readers. It allows users to dynamically create configuration files tailored to their preferences.
 
 ## Try it Out
 
-You can try the Nickel Menu Configuration Generator live [here](https://acestronautical.github.io/nickelmenu-js/).
+You can try the NickelMenu Configuration Generator live [here](https://acestronautical.github.io/nickelmenu-js/).
 
 ## Credits and License
 

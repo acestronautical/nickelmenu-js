@@ -66,42 +66,76 @@ document.addEventListener('DOMContentLoaded', () => {
         parentElement.appendChild(row);
     }
 
-    function gatherConfig() {
+    async function gatherConfig() {
         const config = [];
         const rows = formContainer.querySelectorAll('.row');
         let valid = true;
-        rows.forEach(row => {
+        let icon;
+        let icon_active;
+
+        for (let index = 0; index < rows.length; index++) {
+            const row = rows[index];
             const inputs = row.querySelectorAll('input, select');
             const select = inputs[0];
             const selectedOption = select.value;
+
             if (selectedOption) {
                 const inputValues = Array.from(inputs)
                     .slice(1)
                     .map(input => input.value)
                     .filter(value => value);
+
                 if (inputValues.length < (inputs.length - 1)) {
                     valid = false;
                 }
-                config.push([selectedOption, ...inputValues].join(':'));
+
+                if (selectedOption === "experimental:menu_main_15505_icon") {
+                    if (inputs[1].value === 'custom') {
+                        icon = inputs[2].files[0];
+                    } else {
+                        let response = await fetch('assets/icons/' + inputs[1].value + '.png');
+                        icon = await response.blob();
+                    }
+                    config.push(`${selectedOption}:/mnt/onboard/.adds/.nickel.png`);
+                } else if (selectedOption === "experimental:menu_main_15505_icon_active") {
+                    if (inputs[1].value === 'custom') {
+                        icon_active = inputs[2].files[0];
+                    } else {
+                        let response = await fetch('assets/icons/' + inputs[1].value + '.png');
+                        icon_active = await response.blob();
+                    }
+                    config.push(`${selectedOption}:/mnt/onboard/.adds/.nickel_active.png`);
+                } else {
+                    config.push([selectedOption, ...inputValues].join(':'));
+                }
             } else {
                 valid = false;
             }
-        });
-        return { configText: config.join('\n'), valid };
+        }
+        return { configText: config.join('\n'), valid, icon, icon_active };
     }
 
     async function downloadConfig() {
-        const { configText, valid } = gatherConfig();
+        const { configText, valid, icon, icon_active } = await gatherConfig();
         if (!valid) {
             alert('Please fill in all fields before downloading the configuration.');
             return;
         }
+
         const zip = new JSZip();
         const response = await fetch('assets/KoboRoot.tgz');
         if (!response.ok) {
             alert('Failed to download KoboRoot.tgz');
             return;
         }
+
+        if (icon) {
+            zip.file('.adds/.nickel.png', icon);
+        }
+        if (icon_active) {
+            zip.file('.adds/.nickel_active.png', icon_active);
+        }
+
         const blob = await response.blob();
         zip.file('KoboRoot.tgz', blob);
         zip.file('.adds/nm/config', configText);

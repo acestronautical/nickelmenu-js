@@ -3,8 +3,28 @@ const NickelConfigOptions = {
     title: "Configure menu label, icon, add or remove menu items",
     options: {
         menu_main_15505_label: [{ label: "label", title: "sets the label used for the NickelMenu button", placeholder: "Shortcuts" }],
-        menu_main_15505_icon: [{ label: "icon", title: "sets icon used for the NickelMenu button", file: "assets/.nickel.png" }],
-        menu_main_15505_icon_active: [{ label: "icon", title: "sets the active icon used for the NickelMenu button", file: "assets/.nickel_active.png" }],
+        "experimental:menu_main_15505_icon": [
+            {
+                label: "icon",
+                title: "sets icon used for the NickelMenu button",
+                options: {
+                    star: "assets/star.png",
+                    bookmark: "assets/bookmark.png",
+                    custom: [{ label: "upload", title: "upload an icon", file: "assets/.nickel.png" }]
+                }
+            },
+        ],
+        'experimental:menu_main_15505_icon_active':  [
+            {
+                label: "active_icon",
+                title: "sets icon used for the NickelMenu button",
+                options: {
+                    star: "assets/star.png",
+                    bookmark: "assets/bookmark.png",
+                    custom: [{ label: "upload", title: "upload an icon", file: "assets/.nickel_active.png" }]
+                }
+            },
+        ],
         menu_item: [
             {
                 label: "location",

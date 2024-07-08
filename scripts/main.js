@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (input) {
-            let label = document.createElement('label');
+            const label = document.createElement('label');
             const inputId = `input-${Math.random().toString(36).substr(2, 9)}`;
             input.id = inputId;
             input.title = config.title;
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         row.appendChild(removeButton);
 
-        createInput(config, row, ["root"]);
+        createInput(config, row, ['root']);
         parentElement.appendChild(row);
     }
 
@@ -70,14 +70,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const config = [];
         const rows = formContainer.querySelectorAll('.row');
         let valid = true;
-        let icon;
-        let icon_active;
+        let icon, icon_active;
 
-        for (let index = 0; index < rows.length; index++) {
-            const row = rows[index];
+        for (const row of rows) {
             const inputs = row.querySelectorAll('input, select');
             const select = inputs[0];
             const selectedOption = select.value;
+
+            if (!selectedOption) {
+                valid = false;
+                continue;
+            }
 
             if (selectedOption) {
                 const inputValues = Array.from(inputs)
@@ -108,8 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     config.push([selectedOption, ...inputValues].join(':'));
                 }
-            } else {
-                valid = false;
             }
         }
         return { configText: config.join('\n'), valid, icon, icon_active };
@@ -124,18 +125,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const zip = new JSZip();
         const response = await fetch('assets/KoboRoot.tgz');
-        if (!response.ok) {
-            alert('Failed to download KoboRoot.tgz');
-            return;
-        }
+        if (!response.ok) throw new Error('Failed to download KoboRoot.tgz');
 
-        if (icon) {
-            zip.file('.adds/.nickel.png', icon);
-        }
-        if (icon_active) {
-            zip.file('.adds/.nickel_active.png', icon_active);
-        }
-
+        if (icon) zip.file('.adds/.nickel.png', icon);
+        if (icon_active) zip.file('.adds/.nickel_active.png', icon_active);
+        
         const blob = await response.blob();
         zip.file('KoboRoot.tgz', blob);
         zip.file('.adds/nm/config', configText);

@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (icon) zip.file('.adds/.nickel.png', icon);
         if (icon_active) zip.file('.adds/.nickel_active.png', icon_active);
-        
+
         const blob = await response.blob();
         zip.file('KoboRoot.tgz', blob);
         zip.file('.adds/nm/config', configText);

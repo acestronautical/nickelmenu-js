@@ -3,10 +3,10 @@ const NickelConfigOptions = {
     title: "Configure menu label, icon, and add or remove menu items",
     options: {
         menu_main_15505_label: [
-            { 
-                label: "label", 
-                title: "Set the label used for the NickelMenu button", 
-                placeholder: "Shortcuts" 
+            {
+                label: "label",
+                title: "Set the label used for the NickelMenu button",
+                placeholder: "Shortcuts"
             }
         ],
         "experimental:menu_main_15505_icon": [
@@ -17,10 +17,10 @@ const NickelConfigOptions = {
                     star: "assets/star.png",
                     bookmark: "assets/bookmark.png",
                     custom: [
-                        { 
-                            label: "upload", 
-                            title: "Upload an icon", 
-                            file: "assets/.nickel.png" 
+                        {
+                            label: "upload",
+                            title: "Upload an icon",
+                            file: "assets/.nickel.png"
                         }
                     ]
                 }
@@ -34,10 +34,10 @@ const NickelConfigOptions = {
                     star: "assets/star.png",
                     bookmark: "assets/bookmark.png",
                     custom: [
-                        { 
-                            label: "upload", 
-                            title: "Upload an active icon", 
-                            file: "assets/.nickel_active.png" 
+                        {
+                            label: "upload",
+                            title: "Upload an active icon",
+                            file: "assets/.nickel_active.png"
                         }
                     ]
                 }
@@ -66,52 +66,52 @@ const NickelConfigOptions = {
                 title: "Type of action to run",
                 options: {
                     cmd_spawn: [
-                        { 
-                            label: "cmd", 
-                            title: "Start a command in the background", 
-                            placeholder: "logread > /mnt/onboard/.adds/syslog.log" 
+                        {
+                            label: "cmd",
+                            title: "Start a command in the background",
+                            placeholder: "logread > /mnt/onboard/.adds/syslog.log"
                         }
                     ],
                     cmd_output: [
-                        { 
-                            label: "cmd", 
-                            title: "Run a command, wait for it to exit, and optionally display the output", 
-                            placeholder: ":500:quiet :/usr/bin/pkill -f \"^/usr/bin/tcpsvd -E 0.0.0.0 2023\"" 
+                        {
+                            label: "cmd",
+                            title: "Run a command, wait for it to exit, and optionally display the output",
+                            placeholder: ":500:quiet :/usr/bin/pkill -f \"^/usr/bin/tcpsvd -E 0.0.0.0 2023\""
                         }
                     ],
                     dbg_syslog: [
-                        { 
-                            label: "message", 
-                            title: "Write a message to syslog (for testing)", 
-                            placeholder: "Text to write" 
+                        {
+                            label: "message",
+                            title: "Write a message to syslog (for testing)",
+                            placeholder: "Text to write"
                         }
                     ],
                     dbg_error: [
-                        { 
-                            label: "message", 
-                            title: "Always return an error (for testing)", 
-                            placeholder: "Error message" 
+                        {
+                            label: "message",
+                            title: "Always return an error (for testing)",
+                            placeholder: "Error message"
                         }
                     ],
                     dbg_msg: [
-                        { 
-                            label: "message", 
-                            title: "Show a message (for testing)", 
-                            placeholder: "Message" 
+                        {
+                            label: "message",
+                            title: "Show a message (for testing)",
+                            placeholder: "Message"
                         }
                     ],
                     dbg_toast: [
-                        { 
-                            label: "message", 
-                            title: "Show a toast (for testing)", 
-                            placeholder: "Message" 
+                        {
+                            label: "message",
+                            title: "Show a toast (for testing)",
+                            placeholder: "Message"
                         }
                     ],
                     kfmon: [
-                        { 
-                            label: "filename", 
-                            title: "Trigger a KFMon action", 
-                            placeholder: "Filename of the KFMon watched item to launch" 
+                        {
+                            label: "filename",
+                            title: "Trigger a KFMon action",
+                            placeholder: "Filename of the KFMon watched item to launch"
                         }
                     ],
                     nickel_setting: [
@@ -151,17 +151,17 @@ const NickelConfigOptions = {
                         }
                     ],
                     nickel_browser: [
-                        { 
-                            label: "url", 
-                            title: "Open the web browser", 
-                            placeholder: "URL to open as homepage" 
+                        {
+                            label: "url",
+                            title: "Open the web browser",
+                            placeholder: "URL to open as homepage"
                         }
                     ],
                     "nickel_browser:modal": [
-                        { 
-                            label: "url", 
-                            title: "Open the web browser as a pop-up", 
-                            placeholder: "URL to open as homepage" 
+                        {
+                            label: "url",
+                            title: "Open the web browser as a pop-up",
+                            placeholder: "URL to open as homepage"
                         }
                     ],
                     nickel_misc: [

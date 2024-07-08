@@ -1,0 +1,1 @@
+KoboRoot.tgz is from [NickelMenu v0.5.4](https://github.com/pgaskin/NickelMenu/releases/tag/v0.5.4) and should be kept up to date with the latest release from NickelMenu
